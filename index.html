@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrolling Gallery</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #db84e7;
+        }
+        .gallery {
+            display: flex;
+            align-items: center;
+            width: 700px;
+            height: 500px;
+        }
+        .gallery-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth; 
+            width: 500px; 
+        }
+        .gallery ::-webkit-scrollbar{
+         display:none;
+        }
+        .gallery-container span {
+            flex: none;
+            margin: 0 10px;
+        }
+        .gallery-container span img {
+            width: 150px;
+            height: 300px;
+            transition: transform 0.4s ;
+            filter: grayscale(100%);
+        }
+        .gallery-container span img:hover{
+            transform: scale(1.3) ;
+            filter: grayscale(0);
+        }
+        button {
+            padding: 20px;
+            margin: 20px;
+            font-size: 1.5rem;
+            color: white;
+            background-color: orange;
+            border: 0;
+            border-radius:70px;
+            font-weight: bolder;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery">
+        <button id="leftButton">&#60;</button>
+        <div class="gallery-container" id="galleryContainer">
+            <span><img src="mukesh1.jfif" alt="Image 1"></span>
+            <span><img src="mukesh2.jfif" alt="Image 2"></span>
+            <span><img src="mukesh3.jfif" alt="Image 3"></span>
+            <span><img src="mukesh4.jfif" alt="Image 4"></span>
+            <span><img src="mukesh5.jfif" alt="Image 5"></span>
+            <span><img src="mukesh6.jfif" alt="Image 6"></span>
+        </div>
+        <button id="rightButton">&#62;</button>
+    </div>
+
+    <script>
+        const galleryContainer = document.getElementById('galleryContainer');
+        const leftButton = document.getElementById('leftButton');
+        const rightButton = document.getElementById('rightButton');
+        const scrollAmount = 200; 
+
+      
+        leftButton.addEventListener('click', () => {
+            galleryContainer.scrollLeft -= scrollAmount; 
+        });
+
+        rightButton.addEventListener('click', () => {
+            galleryContainer.scrollLeft += scrollAmount; 
+        });
+    </script>
+</body>
+</html>
